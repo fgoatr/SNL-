@@ -41,7 +41,7 @@ void Lx_An(FILE* SNL_Code)
 			tokenList[Now_List].wd.str = TmpC;
 			Now_List++;
 		}
-		else if (IsLetter(tmp)) 
+		else if (IsLetter(tmp))
 		{
 			TmpC.clear();
 			TmpC += tmp;
@@ -50,6 +50,20 @@ void Lx_An(FILE* SNL_Code)
 			{
 				TmpC += tmp;
 				tmp = fgetc(SNL_Code);
+			}
+			if (IsReserved(TmpC))//为保留字
+			{
+				tokenList[Now_List].line = line; // 记录行号
+				tokenList[Now_List].wd.str = GetReserved(TmpC).str; // 记录字符串
+				tokenList[Now_List].wd.tok = GetReserved(TmpC).tok; // 记录token
+				Now_List++;
+			}
+			else
+			{
+				tokenList[Now_List].line = line;
+				tokenList[Now_List].wd.str = TmpC;
+				tokenList[Now_List].wd.tok = ID;
+				Now_List++;
 			}
 		}
 		else if (IsOperator(tmp))

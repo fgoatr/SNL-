@@ -1,6 +1,8 @@
 
 #pragma once
 #include"total.h"
+
+
 bool IsDigit(char ch)
 {
 	if (ch >= '0' && ch <= '9')

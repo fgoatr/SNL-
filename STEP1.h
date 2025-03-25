@@ -1,6 +1,7 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
-#include"writetoken.h"
 #include"total.h"
+#include"writetoken.h"
 #include"axil.h"
 #include"analyse.h"
 
